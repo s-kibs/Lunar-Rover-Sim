@@ -14,7 +14,7 @@ from tensorflow.keras.losses import MSE
 from tensorflow.keras.optimizers import Adam
 
 # Set up a virtual display to render the Lunar Lander environment.
-Display(visible=0, size=(840, 480)).start();
+Display(visible=0, size=(840, 480)).start()
 
 # Set the random seed for TensorFlow
 tf.random.set_seed(utils.SEED)
