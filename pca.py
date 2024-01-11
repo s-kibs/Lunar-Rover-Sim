@@ -97,3 +97,19 @@ plt.show()
 """Meh job with PCA, waqt zaayi
 
 """
+
+pca.n_components = 784
+pca_data =  pca.fit_transform(sample_data)
+#calculating percentage variance, dimenssions(reduced)/dimenssions(toatl)
+percent_var_retained = pca.explained_variance_ /np.sum(pca.explained_variance_)
+# adding all the varainces (e.g till,1,2,3,4 like factorial)
+cum_var_retained = np.cumsum(percent_var_retained)
+#plot
+plt.figure(1,figsize=(6,4))
+plt.clf()
+plt.plot(cum_var_retained, linewidth=2)
+plt.axis('tight')
+plt.grid()
+plt.xlabel('n_componemts')
+plt.ylabel('Cummulative Explained Variance')
+plt.show()
