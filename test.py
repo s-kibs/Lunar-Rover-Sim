@@ -1,5 +1,6 @@
 import tensorflow as tf
 import numpy as np
+import matplotlib.pyplot as plt
 mnist = tf.keras.datasets.mnist
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -30,3 +31,18 @@ probability_model = tf.keras.Sequential([
   tf.keras.layers.Softmax()
 ])
 probability_model(x_test[:5])
+
+#test example a varying variable
+test_example = 6785 
+input_test_image = x_test[test_example]
+true_label = y_test[test_example]
+
+
+input_test_image = np.expand_dims(input_test_image, axis=0)
+predictions_to_test = model.predict(input_test_image)
+predicted_test_label = np.argmax(predictions_to_test)
+
+
+plt.imshow(x_test[test_example], cmap='gray')
+plt.title(f'True Label: {true_label}, Predicted Label: {predicted_test_label}')
+plt.show()
